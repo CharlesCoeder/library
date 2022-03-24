@@ -9,6 +9,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <button onClick="showForm()" type="button">Add Book</button>
+    <div class="bookshelf">
+
+    </div>
+
+    <div class="addBook">
+        <div>Add Book</div>
+        <form action="">
+            <div class="form-element">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="form-element">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author">
+            </div>
+            <div class="form-element">
+                <label for="pages">Pages</label>
+                <input type="text" id="pages" name="pages">
+            </div>
+            <div class="form-element">
+                <label for="finished">Finished</label>
+                <input type="checkbox" id="finished" name="finished">
+            </div>
+            <button onclick="addBookToLibrary(this.form)" type="button">Add</button>
+            <button onclick="hideForm()" type="button">X</button>
+        </form>
+    </div>
+
 </body>
 </html>
