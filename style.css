@@ -1,44 +1,64 @@
 .book {
     width: 200px;
-    height: 400px;
-    background-color: lightgray;
+    /* height: 250px; */
+    background-color: #836440;
+    color: white;
     padding: 30px;
     display: flex;
     flex-direction: column; 
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 30px;
+    text-align: center;
+    border-radius: 10px;
 
 }
 
 .bookshelf {
     display: grid;
     justify-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(310px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
 }
 
 body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0px;
 }
 
 .title {
+    font-size: 2.5rem;
+}
+
+.author {
     font-size: 1.5rem;
 }
 
-.addBook {
-    background-color: red;
+.pages {
+    font-size: 1rem;
+}
+
+.addBookForm {
+    background-color: #836440;
     color: white;
-    /* display: none; */
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
-    border-radius: 25px;
-    display: flex;
+    width: 390px;
+    height: 465px;
+    border-radius: 10px;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
 form {
@@ -46,6 +66,7 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+    gap: 5px;
 }
 
 .form-element {
@@ -62,3 +83,126 @@ input[type="checkbox"]{
     width: 50px;
     height: 50px;
 }
+
+.header {
+    padding: 50px 0px 50px 0px;
+    margin: 0px 0px 10px 0px;
+    font-size: 3rem;
+    color: #836440;
+    box-shadow: 5px 5px 5px rgb(146, 146, 146);
+    width: 100vw;
+    text-align: center;
+    background-color: white;
+    font-weight: bold;
+}
+
+.container {
+    padding: 50px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    flex: 1;
+    width: 100vw;
+    background-color: rgb(255, 255, 240);
+}
+
+.title {
+    max-width: 90%;
+    overflow-wrap: break-word;
+    padding: 10px;
+    border: 3px solid white;
+    margin-bottom: 10px;
+}
+
+#showForm {
+    background-color: #405d27;
+    color: white;
+    padding: 20px;
+    font-size: 2rem;
+    border: none;
+    border-radius: 30px;
+}
+
+.darken {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* Toggle button styling from https://www.w3schools.com/howto/howto_css_switch.asp */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 25px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #405d27;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #405d27;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+  }
+
+  /* End of toggle button styling */
+
+  .toggle {
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+  }
+
+  .addBookForm > div:first-child {
+      font-size: 2.5rem;
+  }
+
+  form > button {
+      margin-top: 15px;
+  }
+
+/* TO DO
+Form submit button styling
+Rearrange the add book form to imitate the look of a book on the shelf
+*/

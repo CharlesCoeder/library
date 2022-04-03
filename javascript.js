@@ -56,6 +56,8 @@ function displayBook(book){
     bookFinished.classList.add('finished');
     bookFinished.textContent = book.finished;
 
+    bookRemove = 
+
     bookDiv.appendChild(bookTitle);
     bookDiv.appendChild(bookAuthor);
     bookDiv.appendChild(bookPages);
@@ -72,12 +74,23 @@ function addBookToLibrary(form){
 }
 
 // Functions for buttons that show/hide the form
+const addBookForm = document.querySelector('.addBookForm');
+const darken = document.querySelector('.darken');
 function showForm(){
-    document.querySelector('.addBook').setAttribute('style', 'display:block');
+    addBookForm.setAttribute('style', 'display:flex');
+    darken.setAttribute('style', 'display: block');
+
 }
 function hideForm(){
-    document.querySelector('.addBook').setAttribute('style', 'display:none');
+    addBookForm.setAttribute('style', 'display:none');
+    darken.setAttribute('style', 'display: none');
 }
+
+document.addEventListener('mouseup', function(e){
+    if (!addBookForm.contains(e.target)){
+        hideForm();
+    }
+})
 
 // Temporary hard-coded Books
 let x = new Book("hobbit", "tolkien", 400, false);
@@ -88,3 +101,11 @@ myLibrary.push(x, y, z);
 for (const book of myLibrary){
     displayBook(book);
 }
+
+
+
+
+// TO DO
+//
+// Form validation
+// Add buttons to the books to toggle if finished and to remove book
