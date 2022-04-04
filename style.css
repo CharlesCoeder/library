@@ -208,6 +208,11 @@ input[type="checkbox"]{
     width: 50px;
 }
 
+.finishedToggle {
+    height: 25px;
+    width: 50px;
+}
+
   
 /* TO DO
 Form submit button styling

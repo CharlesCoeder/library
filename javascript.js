@@ -79,11 +79,26 @@ function displayBook(book){
     bookRemove.classList.add('remove');
     bookRemove.onclick = function(){removeBook(bookDiv.dataset.index); }
 
+    const finishedToggle = document.createElement('button');
+    finishedToggle.classList.add('finishedToggle');
+    finishedToggle.onclick = function(){
+
+        if (book.finished == true){
+            book.finished = false;
+        }   
+        else {
+            book.finished = true;
+        }
+        bookFinished.textContent = book.finished;
+    }
+
     bookDiv.appendChild(bookTitle);
     bookDiv.appendChild(bookAuthor);
     bookDiv.appendChild(bookPages);
     bookDiv.appendChild(bookFinished);
     bookDiv.appendChild(bookRemove);
+    bookDiv.appendChild(finishedToggle);
+    
     bookshelf.appendChild(bookDiv);
 
 }
