@@ -1,5 +1,6 @@
 .book {
     width: 200px;
+    min-height: 310px;
     /* height: 250px; */
     background-color: #836440;
     color: white;
@@ -202,6 +203,12 @@ input[type="checkbox"]{
       margin-top: 15px;
   }
 
+.remove {
+    height: 25px;
+    width: 50px;
+}
+
+  
 /* TO DO
 Form submit button styling
 Rearrange the add book form to imitate the look of a book on the shelf

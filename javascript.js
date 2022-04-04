@@ -21,7 +21,7 @@ Book.prototype.info = function info() {
     return this.title + " by " + this.author + ", " + this.pages + " pages, " + read;
 }
 
-// Creates new book object from form inputs
+// Creates new Book object from form inputs
 function createBook(form){
     let finished;
     if (form.finished.checked){
@@ -35,10 +35,29 @@ function createBook(form){
     return temp;
 }
 
-// Displays book object as HTML
+function removeBook(index){
+    const books = document.querySelectorAll('.book');
+
+    // Update index data attributes
+    const bookArray = Array.from(books).filter(bk => bk.dataset.index > index);
+    for (const book of bookArray){
+        book.dataset.index -= 1;
+    }
+
+    // Remove book's elements from DOM
+    const removedBook = document.querySelector('[data-index=' + CSS.escape(index) + "]");
+    removedBook.remove();
+
+    // Remove Book object from myLibrary array
+    myLibrary.splice(index, 1);
+
+}
+
+// Displays Book object as HTML
 function displayBook(book){
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
+    bookDiv.dataset.index = myLibrary.length - 1;
     
     const bookTitle = document.createElement('div');
     bookTitle.classList.add('title');
@@ -56,17 +75,20 @@ function displayBook(book){
     bookFinished.classList.add('finished');
     bookFinished.textContent = book.finished;
 
-    bookRemove = 
+    const bookRemove = document.createElement('button');
+    bookRemove.classList.add('remove');
+    bookRemove.onclick = function(){removeBook(bookDiv.dataset.index); }
 
     bookDiv.appendChild(bookTitle);
     bookDiv.appendChild(bookAuthor);
     bookDiv.appendChild(bookPages);
     bookDiv.appendChild(bookFinished);
+    bookDiv.appendChild(bookRemove);
     bookshelf.appendChild(bookDiv);
 
 }
 
-// Function that creates a new book object, adds it to myLibrary array, and displays it as HTML
+// Function that creates a new Book object, adds it to myLibrary array, and displays it as HTML
 function addBookToLibrary(form){
     const newBook = createBook(form);
     myLibrary.push(newBook);
@@ -93,16 +115,15 @@ document.addEventListener('mouseup', function(e){
 })
 
 // Temporary hard-coded Books
-let x = new Book("hobbit", "tolkien", 400, false);
-x.info();
-let y = new Book("the last wish", "andrej sapkowski", 300, true);
+let x = new Book("hobbit", "tolkien", 400, true);
+let y = new Book("the last wish", "andrzej sapkowski", 300, true);
 let z = new Book("arthur", "some guy", 50, false);
-myLibrary.push(x, y, z);
-for (const book of myLibrary){
+
+const arry = [x,y,z];
+for (const book of arry){
+    myLibrary.push(book);
     displayBook(book);
 }
-
-
 
 
 // TO DO
