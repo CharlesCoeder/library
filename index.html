@@ -19,34 +19,19 @@
     </div>
 
     <div class="darken"></div>
-
-
-    <div class="addBookForm">
-        <div>Add Book</div>
-        <form action="">
-            <div class="form-element">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title">
-            </div>
-            <div class="form-element">
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author">
-            </div>
-            <div class="form-element">
-                <label for="pages">Pages</label>
-                <input type="text" id="pages" name="pages">
-            </div>
-            <div class="form-element toggle">
-                <div>Finished</div>
+    <form class="addBookForm" action="">
+            <textarea id="title" class="clear" name="title" placeholder="title..." autocomplete="off"></textarea>
+            <input type="text" class="clear" id="author" name="author" placeholder="author..." autocomplete="off">
+            <input type="text" class="clear" id="pages" name="pages" placeholder="page count..." autocomplete="off">
+            <div class="toggle">
+                have you finished the book?
                 <label for="finished" class="switch">
                     <input type="checkbox" id="finished" name="finished">
-                    <span class="slider"></span>
+                    <span class="slider round"></span>
                 </label>
-            </div>
-            <button onclick="addBookToLibrary(this.form)" type="button">Add</button>
-        </form>
-    </div>
-    
 
+            </div>
+        <button onclick="addBookToLibrary(this.form)" type="button">Add</button>
+    </form>
 </body>
 </html>

@@ -1,7 +1,6 @@
-.book {
+.book{
     width: 200px;
     min-height: 310px;
-    /* height: 250px; */
     background-color: #836440;
     color: white;
     padding: 30px;
@@ -11,7 +10,7 @@
     align-items: center;
     text-align: center;
     border-radius: 10px;
-
+    gap: 10px;
 }
 
 .bookshelf {
@@ -33,56 +32,45 @@ body {
     margin: 0px;
 }
 
-.title {
-    font-size: 2.5rem;
-}
-
-.author {
+.author, #author {
     font-size: 1.5rem;
 }
 
-.pages {
-    font-size: 1rem;
+#author {
+    width: 66%;
+    height: 5%;
+}
+
+#pages {
+    width: 45%;
+    font-size: 1.25rem;
+    height: 4%;
 }
 
 .addBookForm {
     background-color: #836440;
     color: white;
     display: none;
+    width: calc(.645* 80vh);
+    height: 80vh;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    justify-content: flex-start;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 390px;
-    height: 465px;
-    border-radius: 10px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
 }
 
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 5px;
-}
-
-.form-element {
-    display: flex;
-    flex-direction: column;
-    width: 250px;
-}
-
-input {
-    flex-grow: 1;
-}
-
-input[type="checkbox"]{
-    width: 50px;
-    height: 50px;
+    padding: 30px;
 }
 
 .header {
@@ -110,10 +98,17 @@ input[type="checkbox"]{
 
 .title {
     max-width: 90%;
+    min-width: 65px;
     overflow-wrap: break-word;
     padding: 10px;
     border: 3px solid white;
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+#title {
+    border: 3px solid white;
+    font-size: 2.5rem;
+    margin-top: 34px;
 }
 
 #showForm {
@@ -142,7 +137,7 @@ input[type="checkbox"]{
     width: 40px;
     height: 25px;
   }
-
+a
   .switch input {
     opacity: 0;
     width: 0;
@@ -187,34 +182,104 @@ input[type="checkbox"]{
     transform: translateX(14px);
   }
 
-  /* End of toggle button styling */
-
-  .toggle {
-      flex-direction: row;
-      align-items: center;
-      gap: 20px;
+  .slider.round {
+    border-radius: 34px;
   }
-
-  .addBookForm > div:first-child {
-      font-size: 2.5rem;
+  
+  .slider.round:before {
+    border-radius: 50%;
   }
+  /* End of toggle button styling from w3schools */
 
-  form > button {
-      margin-top: 15px;
-  }
-
-.remove {
-    height: 25px;
-    width: 50px;
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .finishedToggle {
-    height: 25px;
-    width: 50px;
+    height: 40px;
+    width: 100px;
+    border-radius: 15px;
+    background-color: #836440;
+    border: 1px solid white;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
 }
 
-  
-/* TO DO
-Form submit button styling
-Rearrange the add book form to imitate the look of a book on the shelf
-*/
+.grey {
+    color: rgb(168, 168, 168);
+    border: 1px solid rgb(168, 168, 168);
+}
+
+input, textarea{
+    background-color: #6e5436;
+    border: none;
+    text-align: center;
+    color: white;
+}
+
+textarea {
+    width: 84%;
+    min-height: 23%;
+    outline: none;
+    resize: none;
+}
+
+textarea, .title {
+    border-radius: 10px;
+}
+
+input {
+    border-radius: 10px;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.932);
+}
+
+/* input:focus::placeholder, textarea:focus::placeholder{
+    color: transparent;
+  } */
+
+input:focus {
+    outline: none;  
+}
+
+.addBookForm > button {
+    width: 30%;
+    height: 7%;
+    border-radius: 10px;
+    color: white;
+    background-color: #836440;
+    border: 2px solid white;
+    cursor: pointer;
+    font-size: 1.25rem;
+    margin-top: 60%;
+}
+
+.addBookForm > button:hover {
+    background-color: #6e5436;
+}
+
+.remove {
+    background-color: #836440;
+    border: 2px solid white;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.buttons {
+    display: flex;
+    margin-top: auto;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}

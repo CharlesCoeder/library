@@ -21,6 +21,17 @@ Book.prototype.info = function info() {
     return this.title + " by " + this.author + ", " + this.pages + " pages, " + read;
 }
 
+Book.prototype.getFinished = function getFinished() {
+    let temp = "";
+    if (this.finished == true){
+        temp = "Finished!";
+    }
+    else {
+        temp = "Not yet finished...";
+    }
+    return temp;
+}
+
 // Creates new Book object from form inputs
 function createBook(form){
     let finished;
@@ -71,43 +82,62 @@ function displayBook(book){
     bookPages.classList.add('pages');
     bookPages.textContent = book.pages;
 
+    const buttons = document.createElement('div');
+    buttons.classList.add('buttons');
+
     const bookFinished = document.createElement('div');
     bookFinished.classList.add('finished');
     bookFinished.textContent = book.finished;
 
-    const bookRemove = document.createElement('button');
-    bookRemove.classList.add('remove');
-    bookRemove.onclick = function(){removeBook(bookDiv.dataset.index); }
-
-    const finishedToggle = document.createElement('button');
-    finishedToggle.classList.add('finishedToggle');
-    finishedToggle.onclick = function(){
-
+    const finishedToggleBtn = document.createElement('button');
+    finishedToggleBtn.classList.add('finishedToggle');
+    if (!(book.getFinished() == "Finished!")){
+        finishedToggleBtn.classList.add('grey');
+    }
+    finishedToggleBtn.textContent = book.getFinished();
+    finishedToggleBtn.addEventListener('click', () => {
         if (book.finished == true){
             book.finished = false;
         }   
         else {
             book.finished = true;
         }
-        bookFinished.textContent = book.finished;
-    }
+
+        const temp = book.getFinished();
+        finishedToggleBtn.textContent = temp;
+
+        if (temp == "Finished!"){
+            finishedToggleBtn.classList.remove('grey');
+        }
+        else {
+            finishedToggleBtn.classList.add('grey');
+        }
+    });
+
+    buttons.appendChild(finishedToggleBtn);
+
+    const bookRemoveBtn = document.createElement('button');
+    bookRemoveBtn.classList.add('remove');
+    bookRemoveBtn.textContent = "X";
+    bookRemoveBtn.onclick = function(){removeBook(bookDiv.dataset.index); }
+    buttons.appendChild(bookRemoveBtn);
 
     bookDiv.appendChild(bookTitle);
     bookDiv.appendChild(bookAuthor);
     bookDiv.appendChild(bookPages);
-    bookDiv.appendChild(bookFinished);
-    bookDiv.appendChild(bookRemove);
-    bookDiv.appendChild(finishedToggle);
+    bookDiv.appendChild(buttons);
     
     bookshelf.appendChild(bookDiv);
-
 }
+
 
 // Function that creates a new Book object, adds it to myLibrary array, and displays it as HTML
 function addBookToLibrary(form){
     const newBook = createBook(form);
     myLibrary.push(newBook);
     displayBook(newBook);
+    clearForm();
+    hideForm();
 }
 
 // Functions for buttons that show/hide the form
@@ -121,6 +151,16 @@ function showForm(){
 function hideForm(){
     addBookForm.setAttribute('style', 'display:none');
     darken.setAttribute('style', 'display: none');
+}
+
+function clearForm(){
+    const inputs = addBookForm.querySelectorAll('.clear');
+    inputs.forEach((input) => {
+        input.value = "";
+
+    const finishedFormButton = document.getElementById('finished');
+    finishedFormButton.checked = false;
+    })
 }
 
 document.addEventListener('mouseup', function(e){
@@ -140,8 +180,6 @@ for (const book of arry){
     displayBook(book);
 }
 
-
 // TO DO
 //
 // Form validation
-// Add buttons to the books to toggle if finished and to remove book
