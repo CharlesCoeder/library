@@ -1,35 +1,24 @@
 let myLibrary = [];
 const bookshelf = document.querySelector('.bookshelf');
 
-// Book object constructor
-function Book(title, author, pages, finished){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.finished = finished;
-}
+class Book {
+    constructor(title, author, pages, finished){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.finished = finished;
+    }
 
-// Prints information of book
-Book.prototype.info = function info() {
-    let read = ""
-    if (this.finished == false){
-     read = "not yet read";
+    getFinished() {
+        let temp = "";
+        if (this.finished == true){
+            temp = "Finished!";
+        }
+        else {
+            temp = "Not yet finished...";
+        }
+        return temp;
     }
-    else {
-     read = "already read";
-    }
-    return this.title + " by " + this.author + ", " + this.pages + " pages, " + read;
-}
-
-Book.prototype.getFinished = function getFinished() {
-    let temp = "";
-    if (this.finished == true){
-        temp = "Finished!";
-    }
-    else {
-        temp = "Not yet finished...";
-    }
-    return temp;
 }
 
 // Creates new Book object from form inputs
